@@ -16,7 +16,6 @@ module Madlep
       
       if content_length
         length = content_length.to_i
-        length -= "</html>".length
         length += @message.length
         headers['Content-Length'] = length.to_s
       end
