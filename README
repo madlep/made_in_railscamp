@@ -9,15 +9,19 @@ Tweaks the generated HTML for get requests to add some text about what you did a
 To install
 ==========
 
-Just chuck it in your config.ru file at the root of your project. e.g:
+Add it as a plugin as normal:
+  script/plugin install git://github.com/madlep/made_in_railscamp.git
+
+Then just chuck it in your config.ru file at the root of your project. e.g:
+  # Rack Dispatcher
+
+  # Require your environment file to bootstrap Rails
+  require File.dirname(__FILE__) + '/config/environment'
+
+  use Madlep::MadeInRailscamp
+
+  # Dispatch the request
+  run ActionController::Dispatcher.new
 
 
-# Rack Dispatcher
-
-# Require your environment file to bootstrap Rails
-require File.dirname(__FILE__) + '/config/environment'
-
-use Madlep::MadeInRailscamp
-
-# Dispatch the request
-run ActionController::Dispatcher.new
+Then you should see railscamp pimping from every page in your app.
