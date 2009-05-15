@@ -1,13 +1,23 @@
 MadeInRailscamp
 ===============
 
-Introduction goes here.
+Super simple rack middleware to PROVE TO THE WORLD that you made your cool app at railscamp.
+
+Tweaks the generated HTML for get requests to add some text about what you did at railscamp.
 
 
-Example
-=======
+To install
+==========
 
-Example goes here.
+Just chuck it in your config.ru file at the root of your project. e.g:
 
 
-Copyright (c) 2009 [name of plugin creator], released under the MIT license
+# Rack Dispatcher
+
+# Require your environment file to bootstrap Rails
+require File.dirname(__FILE__) + '/config/environment'
+
+use Madlep::MadeInRailscamp
+
+# Dispatch the request
+run ActionController::Dispatcher.new
