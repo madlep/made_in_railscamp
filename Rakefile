@@ -1,17 +1,25 @@
 require 'rake'
-require 'rake/testtask'
 require 'rake/rdoctask'
+require 'spec/rake/spectask'
 
 desc 'Default: run unit tests.'
-task :default => :test
+task :default => :spec
 
-desc 'Test the made_in_railscamp plugin.'
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
+desc "Run all specs"
+Spec::Rake::SpecTask.new do |t|
+  t.spec_files = FileList['spec/**/*_spec.rb']
+  t.spec_opts = ['--options', 'spec/spec.opts']
 end
+
+desc 'Generate documentation for the rspec-rr plugin.'
+Rake::RDocTask.new(:rdoc) do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title    = 'Rspec-rr'
+  rdoc.options << '--line-numbers' << '--inline-source'
+  rdoc.rdoc_files.include('README')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
 
 desc 'Generate documentation for the made_in_railscamp plugin.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
