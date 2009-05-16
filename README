@@ -6,7 +6,7 @@ Super simple rack middleware to PROVE TO THE WORLD that you made your cool app a
 Tweaks the generated HTML for get requests to add some text about what you did at railscamp.
 
 
-To install
+To Install
 ==========
 
 Add it as a plugin as normal:
@@ -25,3 +25,8 @@ Then just chuck it in your config.ru file at the root of your project. e.g:
 
 
 Then you should see railscamp pimping from every page in your app.
+
+Who Is Responsible For This Mess?
+=================================
+Julian "madlep" Doherty
+madlep@ubercharged.net
