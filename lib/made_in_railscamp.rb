@@ -21,11 +21,11 @@ module Madlep
     def say_made_at_railscamp!(body, headers)
       calc_content_length = headers.include?('Content-Length')
       new_content_length = 0
-      new_body = body.inject([]) do |new_body_acc, body_part|
+      new_body = []
+      body.each do |body_part|
         new_body_part = body_part.gsub(/<\/body>/, "#{@message}</body>")
-        new_body_acc << new_body_part
+        new_body << new_body_part
         new_content_length += Rack::Utils.bytesize(new_body_part) if calc_content_length
-        new_body_acc
       end
       
       if calc_content_length
